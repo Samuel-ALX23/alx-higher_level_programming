@@ -1,9 +1,6 @@
 #!/usr/bin/python3
+#!/usr/bin/python3
 def print_reversed_list_integer(my_list=[]):
-    if my_list is None or not isinstance(my_list, list):
-        return None
-    for i in range(len(my_list) - 1, -1, -1):
-        if isinstance(my_list[i], int):
-            print("{:d}".format(my_list[i]))
-        else:
-            return None
+    if my_list:
+        for index in range(1, len(my_list) + 1):
+            print("{:d}".format(my_list[index * -1]))
