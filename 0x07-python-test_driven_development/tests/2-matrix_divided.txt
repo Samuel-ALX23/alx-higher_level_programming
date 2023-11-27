@@ -1,0 +1,103 @@
+"""
+Test cases for the matrix_divided function in the 2-matrix_divided module.
+"""
+
+# Importing function from the module
+matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+# Dividing a matrix by 3
+assert matrix_divided([[1, 2, 3], [4, 5, 6]], 3) == [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+# Dividing a matrix by 0
+try:
+    matrix_divided([[1, 2, 3], [4, 5, 6]], 0)
+except ZeroDivisionError:
+    pass
+else:
+    raise AssertionError("Expected ZeroDivisionError")
+
+# Dividing a matrix by a float number
+assert matrix_divided([[10, 20, 30], [1.33, 3.74, 6.89], [-8, -9.71, 0]], 5.3) == [[1.89, 3.77, 5.66], [0.25, 0.71, 1.3], [-1.51, -1.83, 0.0]]
+
+# Passing an empty matrix
+try:
+    matrix_divided([], 10)
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Passing a tuple as an argument
+try:
+    matrix_divided((3, 6, 9), 3)
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Dividing a matrix which its rows don't have the same size
+try:
+    matrix_divided([[22, 34], [2.78, 7.1, -10, 2], [-8]], 3)
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Dividing a matrix which its rows don't have the same size 2
+try:
+    matrix_divided([[2, 4], [6.8], [10, 12]], 12)
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Dividing a matrix which its elements aren't integer/float numbers
+try:
+    matrix_divided([["Hello", "World"], ["Hello", "Holberton"]], 10)
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Dividing a matrix which its elements aren't integer/float numbers 2
+try:
+    matrix_divided([["1"], ["2", "3"], ["5", "6", "7"]], 10)
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Passing a matrix which one of its elements is an empty list
+try:
+    matrix_divided([[2.1, 5.8], [], [10, -3]], 8)
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Passing a matrix which one of its elements is a tuple
+try:
+    matrix_divided([[1, -1], (2, -2), [3, -3]], 1)
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Passing div as a list
+try:
+    matrix_divided([[5.7, 8.1], [7.7, 4.9]], [2])
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Passing div as a string
+try:
+    matrix_divided([[10, 50], [30, 20]], "10")
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Dividing a matrix which has positive and negative integer/float numbers
+assert matrix_divided([[-1, 3.1, 0], [78, -103.7, 54]], 9.2) == [[-0.11, 0.34, 0.0], [8.48, -11.27, 5.87]]
