@@ -1,0 +1,52 @@
+"""
+Test cases for the print_square function in the 4-print_square module.
+"""
+
+# Importing the function from the module
+print_square = __import__('4-print_square').print_square
+
+# Printing a square with a size of 5
+print_square(5)
+
+# Passing 0 as the size of the square
+print_square(0)
+
+# Passing a float number as the size of the square
+try:
+    print_square(1.0)
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Passing a string as the size of the square
+try:
+    print_square('2')
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Passing a negative number as the size of the square
+try:
+    print_square(-2)
+except ValueError:
+    pass
+else:
+    raise AssertionError("Expected ValueError")
+
+# Passing None as the size of the square
+try:
+    print_square(None)
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Missing argument
+try:
+    print_square()
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
