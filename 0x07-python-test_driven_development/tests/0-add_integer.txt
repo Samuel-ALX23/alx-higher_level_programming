@@ -1,0 +1,103 @@
+"""
+Test cases for the add_integer function in the 0-add_integer module.
+"""
+
+# Importing function from the module
+add_integer = __import__('0-add_integer').add_integer
+
+# Checking regular addition
+assert add_integer(1, 2) == 3
+
+# Checking negative addition
+assert add_integer(-2, -3) == -5
+
+# Checking float addition
+assert add_integer(2.5, 3.5) == 5
+
+# Checking negative float addition
+assert add_integer(-2.5, -3.5) == -5
+
+# Checking positive with negative addition
+assert add_integer(100, -2) == 98
+
+# Checking rational number with float addition
+assert add_integer(2.1, 98) == 100
+
+# Checking if the second argument is optional - by default, it is 98
+assert add_integer(2) == 100
+
+# Checking a float with negative addition
+assert add_integer(100.3, -2) == 98
+
+# Checking negative float with positive float addition
+assert add_integer(-2.5, 3.5) == 1
+
+# Checking addition over multiple values
+assert [add_integer(i, i ** 2) for i in range(6)] == [0, 2, 6, 12, 20, 30]
+
+# Checking long long int addition
+assert add_integer(999999999999999999999999999999, 1) == 1000000000000000000000000000000
+
+# Checking string with integer addition
+try:
+    add_integer(2, "s")
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Checking for NaN
+try:
+    add_integer(1, float('nan'))
+except ValueError:
+    pass
+else:
+    raise AssertionError("Expected ValueError")
+
+# Checking for inf
+try:
+    add_integer(1, float('inf'))
+except OverflowError:
+    pass
+else:
+    raise AssertionError("Expected OverflowError")
+
+# Checking non-number with number addition
+try:
+    add_integer([1], 2)
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Checking number with non-number addition
+try:
+    add_integer(3, "2")
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Checking non-number with non-number addition
+try:
+    add_integer((2,), {"key": "value"})
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Checking no argument
+try:
+    add_integer()
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Checking more than two arguments provided
+try:
+    add_integer(1, 2, 3)
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
