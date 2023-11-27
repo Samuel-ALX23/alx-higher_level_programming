@@ -1,0 +1,52 @@
+"""
+Test cases for the say_my_name function in the 3-say_my_name module.
+"""
+
+# Importing the module
+say_my_name = __import__("3-say_my_name").say_my_name
+
+# Passing first_name and last_name correctly
+assert say_my_name("John", "Smith") == "My name is John Smith"
+
+# Passing 1 of first_name or last_name correctly
+assert say_my_name("B") == "My name is B"
+
+# Passing None as the last_name
+try:
+    say_my_name("John", None)
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Passing None as the first_name
+try:
+    say_my_name(None)
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Passing a number as the first_name
+try:
+    say_my_name(1)
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Passing a number as the last_name
+try:
+    say_my_name("Betty", 0)
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
+
+# Missing two arguments
+try:
+    say_my_name()
+except TypeError:
+    pass
+else:
+    raise AssertionError("Expected TypeError")
